@@ -1,11 +1,11 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.text.DecimalFormat;
+import java.text.DecimalFormat;// this wasnt working. I dont understand what i did wrong.
 
 
 public class initialMenu {
     public static void main(String args[])
-            throws java.io.IOException {
+            throws java.io.IOException { //no user mistakes allowed:/
         char choice; // for user input
 
         System.out.println("Welcome to The Spot! WHat would you like to order?");
@@ -19,7 +19,7 @@ public class initialMenu {
         double totalPrice = 0.00;
         switch (choice) { //switch statement
             case '1':
-                totalPrice += 5.00;
+                totalPrice += 5.00;// using this we can ensure that we dont have to hard code the prices.
                 System.out.println("That will be: $" +  df2.format(totalPrice) + " Please pay at the register."); //need to make sure that custom order is not cheaper than cheapest item.
                 break;
 
@@ -38,7 +38,7 @@ public class initialMenu {
                 System.out.println("That will be: $" +  df2.format(totalPrice) + " Please pay at the register.");
                 break;
             case '5':
-                System.out.println("Okay, lets get started!");
+                System.out.println("Okay, lets get started!");// call all these methods
                 PriceDatabase totaler = new PriceDatabase();
                 String myBread = getBreads();
                 totalPrice += totaler.get_price(myBread);
@@ -67,16 +67,16 @@ public class initialMenu {
         for (String bread : breads) {
             System.out.print(i + ": ");
             System.out.println(bread);
-            i += 1;
+            i += 1;//this makes sure that the numbers align right in the array
         }
-        int breadIndex = scan.nextInt();
-        String breacChoice = breads[breadIndex - 1];
+        int breadIndex = scan.nextInt();//reads what the user inputs
+        String breadChoice = breads[breadIndex - 1];//makes sure that it lines up right with the array
 
-        System.out.println("You chose: " + breacChoice + "\n");
-        return breacChoice;
+        System.out.println("You chose: " + breadChoice + "\n");
+        return breadChoice;
     }
 
-    public static String getMeats() throws java.io.IOException{
+    public static String getMeats() throws java.io.IOException{//these are all essentailly the same
         Scanner scan = new Scanner(System.in);
         int i = 1;
 
@@ -96,7 +96,7 @@ public class initialMenu {
 
     public static ArrayList<String> getVeggies() throws java.io.IOException{
         Scanner scan = new Scanner(System.in);
-        boolean moreVeggies = true;
+        boolean moreVeggies = true;// allows for the user to pick multiple veggies
         ArrayList<String> veggieChoices = new ArrayList<String>();
        String[] veggies = new String[]{"Lettuce", "Onions", "Tomatoes", "Peppers", "Pickles"};
         while (moreVeggies) {
@@ -112,8 +112,8 @@ public class initialMenu {
 
             System.out.println("You chose: " + veggies[veggieIndex - 1] + "\n");
             System.out.println("Would you like to add another veggie (Y/N): ");
-            String moreChoice = scan.next().toUpperCase();
-            if (moreChoice.equals("N")) {
+            String moreChoice = scan.next().toUpperCase();//allows the user to input lowercase
+            if (moreChoice.equals("N")) {//this changes the boolean to false to stop the picking process
                 moreVeggies = false;
             }
         }
@@ -141,7 +141,7 @@ public class initialMenu {
 
 }
 
-class PriceDatabase {
+class PriceDatabase { //I had to manually assign values to the strings above..
     private double wheat = 1.25;
     private double white = 1.50;
     private double italian = 1.75;
@@ -159,7 +159,7 @@ class PriceDatabase {
     private double pickles = 0.50;
 
     public double get_price(String item) {
-        switch (item) {
+        switch (item) {//this sucked
             case "Wheat":
                 return wheat;
             case "White":
